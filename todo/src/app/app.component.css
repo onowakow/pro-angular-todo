@@ -9,3 +9,16 @@
 .fullWidth {
   width: 100%;
 }
+
+.inputContainer {
+  margin: 15px 15px 5px
+}
+
+.addButton {
+  margin-bottom: 5px;
+}
+
+.toggleContainer {
+  margin: 5px;
+  display: flex;
+}
