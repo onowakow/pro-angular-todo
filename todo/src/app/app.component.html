@@ -24,13 +24,6 @@
     </button>
   </mat-form-field>
 </div>
-<div class="toggleContainer">
-  <span class="spacer"></span>
-  <mat-slide-toggle [(ngModel)]="showCompleted">
-    Show Completed Tasks
-  </mat-slide-toggle>
-  <span class="spacer"></span>
-</div>
 
 <div class="tableContainer">
   <table mat-table [dataSource]="items" class="mat-elevation-z3 fullWidth">
@@ -55,4 +48,12 @@
     <tr mat-header-row *matHeaderRowDef="['id', 'task', 'done']"></tr>
     <tr mat-row *matRowDef="let row; columns: ['id', 'task', 'done']"></tr>
   </table>
+</div>
+
+<div class="toggleContainer">
+  <span class="spacer"></span>
+  <mat-slide-toggle [(ngModel)]="showCompleted">
+    Show Completed Tasks
+  </mat-slide-toggle>
+  <span class="spacer"></span>
 </div>

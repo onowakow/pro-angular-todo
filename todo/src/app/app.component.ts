@@ -14,7 +14,7 @@ export class AppComponent {
     new TodoItem('Dry oranges for garland'),
   ]);
 
-  public showCompleted = false;
+  showCompleted = false;
 
   get username(): string {
     return this.list.user;
