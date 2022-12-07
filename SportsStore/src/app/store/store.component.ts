@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { Product } from '../model/product.model';
 import { ProductRepository } from '../model/product.repository';
+import { Cart } from '../model/cart.model';
 
 @Component({
   selector: 'store',
   templateUrl: 'store.component.html',
 })
 export class StoreComponent {
-  constructor(private repository: ProductRepository) {}
+  constructor(private repository: ProductRepository, private cart: Cart) {}
 
   currentPage = 1;
   productsPerPage: number = 3;
@@ -23,11 +24,8 @@ export class StoreComponent {
     const currentPageIndex = this.currentPage - 1;
     const firstProductIndex = currentPageIndex * this.productsPerPage;
     const finalProductIndex = firstProductIndex + this.productsPerPage;
-    const productsOnPage = products.slice(
-      firstProductIndex,
-      finalProductIndex
-    );
-    return productsOnPage
+    const productsOnPage = products.slice(firstProductIndex, finalProductIndex);
+    return productsOnPage;
   }
 
   get categories(): string[] {
@@ -51,11 +49,15 @@ export class StoreComponent {
   }
 
   goToPage(pageNumber: number) {
-    this.currentPage = pageNumber
+    this.currentPage = pageNumber;
   }
 
   setCategory(category?: string) {
-    this.goToPage(1)
+    this.goToPage(1);
     this.selectedCategory = category;
+  }
+
+  addProductToCart(product: Product) {
+    this.cart.addLine(product)
   }
 }
