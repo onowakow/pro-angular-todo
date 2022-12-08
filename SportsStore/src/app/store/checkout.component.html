@@ -1,0 +1,69 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="bg-dark text-white p-2">
+      <span class="navbar-brand ml-2">SPORTS STORE</span>
+    </div>
+  </div>
+  <div *ngIf="orderSent" class="m-2 text-center">
+    <h2>Thanks!</h2>
+    <p>Thanks for placing your order.</p>
+    <p>We'll ship your goods as soon as possible.</p>
+    <button class="btn btn-primary" routerLink="/store">Return to Store</button>
+  </div>
+  <form
+    *ngIf="!orderSent"
+    #form="ngForm"
+    novalidate
+    (ngSubmit)="submitOrder(form)"
+    class="m-2"
+  >
+    <div class="form-group">
+      <label for="name"> Name </label>
+      <input
+        id="name"
+        name="name"
+        #name="ngModel"
+        class="form-control"
+        type="text"
+        [(ngModel)]="this.order.name"
+        required
+      />
+      <span *ngIf="submitted && name.invalid" class="text-danger"
+        >Please enter your name</span
+      >
+    </div>
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input
+        id="address"
+        name="address"
+        class="form-control"
+        type="text"
+        [(ngModel)]="this.order.address"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="city">City</label>
+      <input
+        id="city"
+        name="city"
+        class="form-control"
+        type="text"
+        [(ngModel)]="this.order.city"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <input
+        id="state"
+        name="state"
+        class="form-control"
+        type="text"
+        [(ngModel)]="this.order.state"
+        required
+      />
+    </div>
+  </form>
+</div>
