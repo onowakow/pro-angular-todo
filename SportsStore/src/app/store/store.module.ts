@@ -7,6 +7,7 @@ import { CounterDirective } from './counter.directive';
 import { CartSummaryComponent } from './cartSummary.component';
 import { CartDetailComponent } from './cartDetail.component';
 import { CheckoutComponent } from './checkout.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { CheckoutComponent } from './checkout.component';
     CartDetailComponent,
     CheckoutComponent,
   ],
-  imports: [BrowserModule, FormsModule, ModelModule],
+  imports: [BrowserModule, FormsModule, ModelModule, RouterModule],
   exports: [StoreComponent, CartDetailComponent, CheckoutComponent],
 })
 export class StoreModule {}

@@ -19,21 +19,26 @@ export class Cart {
   }
 
   updateQuantity(product: Product, quantity: number) {
+    if (product.id === undefined) return;
+
+    if (quantity < 1) {
+      this.removeLine(product.id);
+    }
     const line = this.findLine(product);
     if (line != undefined) {
       line.quantity = Number(quantity);
     }
-    this.recalculate()
+    this.recalculate();
   }
 
-  removeLine(product: Product) {
-    this.lines = this.lines.filter((line) => line.product.id === product.id);
-    this.recalculate()
+  removeLine(id: number) {
+    this.lines = this.lines.filter((line) => line.product.id !== id);
+    this.recalculate();
   }
 
   clear() {
     this.lines = [];
-    this.recalculate()
+    this.recalculate();
   }
 
   private findLine(product: Product) {
